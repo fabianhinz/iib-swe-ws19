@@ -1,6 +1,6 @@
 # Installationsanleitung
 
-1. GitHub Education aktivieren
+1. ~~GitHub Education aktivieren~~ **OPTIONAL**
 2. Gitkraken herunterladen und installieren >> https://www.gitkraken.com/
 3. Gitkraken mit GitHub Account verknüpfen
 4. Visual Studio Code installieren >> https://code.visualstudio.com/
