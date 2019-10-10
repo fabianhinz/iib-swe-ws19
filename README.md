@@ -19,7 +19,7 @@ code --install-extension toba.vsfire
 code --install-extension vincaslt.highlight-matching-tag
 ```
 6. Git installieren >> https://git-scm.com/downloads
-7. Projektvorlage klonen (mit Gitkraken oder via PowerShell) >> https://github.com/fabianhinz/iib-swe-ws19.git
+7. Projektvorlage forken und den Fork klonen (mit Gitkraken oder via PowerShell)
 8. Nodejs installieren via Windows Installer >> https://nodejs.org/en/download/current/
 9. Dependencies installieren (via PowerShell)
 ```
