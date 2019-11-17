@@ -1,14 +1,22 @@
 import * as algoliasearch from 'algoliasearch'
 import * as functions from 'firebase-functions'
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
-const APP_ID = functions.config().algolia.app
-const ADMIN_KEY = functions.config().agolia.key
-
-const client = algoliasearch(APP_ID, ADMIN_KEY)
+const client = algoliasearch('OQ8JBQL1SQ', '1242b033e25e82b9d64d1a8ea92c9fec')
 const index = client.initIndex('recipes')
+
+exports.addToIndex = functions.firestore.document('recipes/{recipesId}').onCreate(snapshot => {
+    const data = snapshot.data()
+    const objectID = snapshot.id
+
+    return index.addObject({ ...data, objectID })
+})
+
+exports.updateIndex = functions.firestore.document('recipes/{recipesId}').onUpdate(change => {
+    const newData = change.after.data()
+    const objectID = change.after.id
+    return index.saveObject({ ...newData, objectID })
+})
+
+exports.deleteFromIndex = functions.firestore
+    .document('recipes/{recipesId}')
+    .onDelete(snapshot => index.deleteObject(snapshot.id))
