@@ -1,6 +1,5 @@
 import {
     AppBar,
-    Box,
     Button,
     Card,
     CardHeader,
@@ -8,13 +7,15 @@ import {
     createStyles,
     Grid,
     makeStyles,
-    Tab,
-    Tabs,
     Toolbar,
     Typography,
 } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined'
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined'
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined'
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
 import React, { FC } from 'react'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 
@@ -31,10 +32,12 @@ const useStyles = makeStyles(theme =>
     })
 )
 
-// Einzelne Ansichten der Ansichten
-// @Simon: Statt dieser Funktionen sollten die
-// Komponenten importiert werden, die dann unten bei der Switch
-// geladen werden
+const Routes = {
+    HOME: '/',
+    EDIT: '/edit',
+    DETAILS: '/details',
+    CREATE: '/create',
+}
 
 function Details() {
     return <h2>Details</h2>
@@ -76,33 +79,38 @@ const App: FC = () => {
                             <Typography variant="h6" noWrap>
                                 Projektvorlage
                             </Typography>
-                            <Button>
-                                <Link to="/"> Home </Link>
-                            </Button>
-                            <Button>
-                                <Link to="/details"> Details </Link>
-                            </Button>
-                            <Button>
-                                <Link to="/create"> Create </Link>
-                            </Button>
-                            <Button>
-                                <Link to="/edit"> Edit </Link>
-                            </Button>
+                            <Link to={Routes.HOME}>
+                                <Button startIcon={<HomeOutlinedIcon />} size="large"></Button>
+                            </Link>
+
+                            <Link to={Routes.DETAILS}>
+                                <Button startIcon={<InfoOutlinedIcon />} size="large"></Button>
+                            </Link>
+
+                            <Link to={Routes.CREATE}>
+                                <Button
+                                    startIcon={<AddCircleOutlineOutlinedIcon />}
+                                    size="large"></Button>
+                            </Link>
+
+                            <Link to={Routes.EDIT}>
+                                <Button startIcon={<EditOutlinedIcon />} size="large"></Button>
+                            </Link>
                         </Toolbar>
                     </AppBar>
 
                     <div className={classes.main}>
                         <Switch>
-                            <Route path="/details">
+                            <Route path={Routes.DETAILS}>
                                 <Details />
                             </Route>
-                            <Route path="/create">
+                            <Route path={Routes.CREATE}>
                                 <Create />
                             </Route>
-                            <Route path="/edit">
+                            <Route path={Routes.EDIT}>
                                 <Edit />
                             </Route>
-                            <Route path="/">
+                            <Route path={Routes.HOME}>
                                 <Home />
                             </Route>
                         </Switch>
