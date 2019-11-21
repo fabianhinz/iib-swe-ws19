@@ -21,6 +21,11 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 
 import logo from '../icons/logo.svg'
 import { responsiveTheme } from '../theme'
+// Import der Komponenten
+import { Create } from './Create'
+import { Details } from './Details'
+import { Edit } from './Edit'
+import { Home } from './Home'
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -32,38 +37,30 @@ const useStyles = makeStyles(theme =>
     })
 )
 
-const Routes = {
+const RoutePaths = {
     HOME: '/',
     EDIT: '/edit',
     DETAILS: '/details',
     CREATE: '/create',
 }
 
-function Details() {
-    return <h2>Details</h2>
-}
-
-function Create() {
-    return <h2>Create</h2>
-}
-
-function Edit() {
-    return <h2>Edit</h2>
-}
-
-function Home() {
-    return (
-        <Grid container spacing={2} justify="center">
-            {['Pfannkuchen', 'Pizza', 'Salat', 'Nudeln mit Tomatensauce'].map(recipe => (
-                <Grid key={recipe} item xs={12} md={6} lg={4}>
-                    <Card>
-                        <CardHeader title={recipe} />
-                    </Card>
-                </Grid>
-            ))}
-        </Grid>
-    )
-}
+// Anzeigen der Komponenten entsprechend des Pfades
+const Routes = (
+    <Switch>
+        <Route path={RoutePaths.DETAILS}>
+            <Details />
+        </Route>
+        <Route path={RoutePaths.CREATE}>
+            <Create />
+        </Route>
+        <Route path={RoutePaths.EDIT}>
+            <Edit />
+        </Route>
+        <Route path={RoutePaths.HOME}>
+            <Home />
+        </Route>
+    </Switch>
+)
 
 const App: FC = () => {
     const classes = useStyles()
@@ -79,42 +76,27 @@ const App: FC = () => {
                             <Typography variant="h6" noWrap>
                                 Projektvorlage
                             </Typography>
-                            <Link to={Routes.HOME}>
+                            <Link to={RoutePaths.HOME}>
                                 <Button startIcon={<HomeOutlinedIcon />} size="large"></Button>
                             </Link>
 
-                            <Link to={Routes.DETAILS}>
+                            <Link to={RoutePaths.DETAILS}>
                                 <Button startIcon={<InfoOutlinedIcon />} size="large"></Button>
                             </Link>
 
-                            <Link to={Routes.CREATE}>
+                            <Link to={RoutePaths.CREATE}>
                                 <Button
                                     startIcon={<AddCircleOutlineOutlinedIcon />}
                                     size="large"></Button>
                             </Link>
 
-                            <Link to={Routes.EDIT}>
+                            <Link to={RoutePaths.EDIT}>
                                 <Button startIcon={<EditOutlinedIcon />} size="large"></Button>
                             </Link>
                         </Toolbar>
                     </AppBar>
 
-                    <div className={classes.main}>
-                        <Switch>
-                            <Route path={Routes.DETAILS}>
-                                <Details />
-                            </Route>
-                            <Route path={Routes.CREATE}>
-                                <Create />
-                            </Route>
-                            <Route path={Routes.EDIT}>
-                                <Edit />
-                            </Route>
-                            <Route path={Routes.HOME}>
-                                <Home />
-                            </Route>
-                        </Switch>
-                    </div>
+                    <div className={classes.main}>{Routes}</div>
                 </Container>
             </ThemeProvider>
         </Router>
