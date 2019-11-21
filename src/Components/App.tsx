@@ -1,3 +1,4 @@
+/* eslint-disable no-redeclare */
 import {
     AppBar,
     Card,
@@ -25,21 +26,6 @@ const useStyles = makeStyles(theme =>
             flexGrow: 1,
         },
 
-        search: {
-            position: 'relative',
-            borderRadius: theme.shape.borderRadius,
-            backgroundColor: fade(theme.palette.common.white, 0.15),
-            '&:hover': {
-                backgroundColor: fade(theme.palette.common.white, 0.25),
-            },
-            marginLeft: 20,
-            width: '100%',
-            [theme.breakpoints.up('sm')]: {
-                marginLeft: theme.spacing(1),
-                width: 'auto',
-            },
-        },
-
         searchIcon: {
             marginRight: theme.spacing(1),
         },
@@ -55,12 +41,6 @@ const useStyles = makeStyles(theme =>
 const App: FC = () => {
     const classes = useStyles()
 
-    const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present']
-
-    const result = words.filter(word => word.length > 6)
-
-    console.log(result)
-
     return (
         <ThemeProvider theme={responsiveTheme}>
             <CssBaseline />
@@ -71,6 +51,7 @@ const App: FC = () => {
                         <div className={classes.search}>
                             <div className={classes.searchIcon}>
                                 <SearchIcon />
+                                <Search />
                             </div>
                             <InputBase
                                 placeholder="Search…"

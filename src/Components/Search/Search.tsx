@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 //Hallo das wird die Testseite Search
 import { createStyles } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 import { fade } from '@material-ui/core/styles'
-import SearchIcon from '@material-ui/icons/Search'
+import React from 'react'
 
+export class Create extends React.Component(
 const useStyles = makeStyles(theme =>
     createStyles({
         search: {
@@ -26,5 +28,4 @@ const useStyles = makeStyles(theme =>
         },
     })
 )
-
-export default Search
+)
