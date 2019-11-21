@@ -7,7 +7,6 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import algoliasearch from 'algoliasearch/lite'
 import React, { FC, useEffect } from 'react'
-import React, { FC } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import logo from '../icons/logo.svg'
