@@ -10,11 +10,12 @@ import {
     Typography,
 } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+
 import React, { FC } from 'react'
 
 import logo from '../icons/logo.svg'
 import { responsiveTheme } from '../theme'
+import { ThemeProvider } from '@material-ui/styles'
 
 const useStyles = makeStyles(theme =>
     createStyles({
