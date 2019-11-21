@@ -29,7 +29,6 @@
         "react-dom": "^16.9.0",
         "react-draggable": "^4.0.3",
         "react-dropzone": "^10.1.8",
-        "react-instantsearch-dom": "^6.0.0",
         "react-markdown": "^4.2.2",
         "react-perfect-scrollbar": "^1.5.3",
         "react-router-dom": "^5.0.1",
