@@ -1,10 +1,8 @@
 import {
     AppBar,
-    Card,
-    CardHeader,
+    Button,
     Container,
     createStyles,
-    Grid,
     makeStyles,
     Toolbar,
     Typography,
@@ -12,9 +10,14 @@ import {
 import CssBaseline from '@material-ui/core/CssBaseline'
 import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import React, { FC } from 'react'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 
 import logo from '../icons/logo.svg'
 import { responsiveTheme } from '../theme'
+import CreateRecipe from './Create/Create'
+import Recipe from './Details/Recipe'
+import EditRecipe from './Edit/Edit'
+import Recipes from './Home/Recipes'
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -26,37 +29,67 @@ const useStyles = makeStyles(theme =>
     })
 )
 
+// Einzelne Ansichten der Ansichten
+// @Simon: Statt dieser Funktionen sollten die
+// Komponenten importiert werden, die dann unten bei der Switch
+// geladen werden
+
+function Details() {
+    return <Recipe></Recipe>
+}
+
+function Home() {
+    return <Recipes></Recipes>
+}
+
 const App: FC = () => {
     const classes = useStyles()
 
     return (
-        <ThemeProvider theme={responsiveTheme}>
-            <CssBaseline />
+        <Router>
+            <ThemeProvider theme={responsiveTheme}>
+                <CssBaseline />
 
-            <Container maxWidth="lg">
-                <AppBar position="fixed">
-                    <Toolbar>
-                        <Typography variant="h6" noWrap>
-                            Projektvorlage
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
+                <Container maxWidth="lg">
+                    <AppBar position="fixed">
+                        <Toolbar>
+                            <Typography variant="h6" noWrap>
+                                Projektvorlage
+                            </Typography>
+                            <Button>
+                                <Link to="/"> Home </Link>
+                            </Button>
+                            <Button>
+                                <Link to="/details"> Details </Link>
+                            </Button>
+                            <Button>
+                                <Link to="/create"> Create </Link>
+                            </Button>
+                            <Button>
+                                <Link to="/edit"> Edit </Link>
+                            </Button>
+                        </Toolbar>
+                    </AppBar>
 
-                <div className={classes.main}>
-                    <Grid container spacing={2} justify="center">
-                        {['Pfannkuchen', 'Pizza', 'Salat', 'Nudeln mit Tomatensauce'].map(
-                            recipe => (
-                                <Grid key={recipe} item xs={12} md={6} lg={4}>
-                                    <Card>
-                                        <CardHeader title={recipe} />
-                                    </Card>
-                                </Grid>
-                            )
-                        )}
-                    </Grid>
-                </div>
-            </Container>
-        </ThemeProvider>
+                    <div className={classes.main}>
+                        <Switch>
+                            <Route path="/details">
+                                <Details />
+                            </Route>
+                            <Route path="/create">
+                                <CreateRecipe />
+                            </Route>
+                            <Route path="/edit">
+                                <EditRecipe />
+                            </Route>
+                            <Route path="/">
+                                <Home />
+                            </Route>
+                        </Switch>
+                    </div>
+                </Container>
+            </ThemeProvider>
+        </Router>
     )
 }
 
