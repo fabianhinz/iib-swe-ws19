@@ -1,23 +1,17 @@
-import {
-    AppBar,
-    Button,
-    Container,
-    createStyles,
-    makeStyles,
-    Toolbar,
-    Typography,
-} from '@material-ui/core'
+import { Container, createStyles, makeStyles } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import React, { FC } from 'react'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import algoliasearch from 'algoliasearch/lite'
+import React, { FC, useEffect } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import logo from '../icons/logo.svg'
+import Routes from '../Routes/Routes'
 import { responsiveTheme } from '../theme'
-import CreateRecipe from './Create/Create'
-import Recipe from './Details/Recipe'
-import EditRecipe from './Edit/Edit'
-import Recipes from './Home/Recipes'
+import TopBar from './TopBar'
+
+const searchClient = algoliasearch('OQ8JBQL1SQ', '685ad40e0ddfa41ec3b7bf9605294351')
+export const index = searchClient.initIndex('recipes')
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -29,64 +23,23 @@ const useStyles = makeStyles(theme =>
     })
 )
 
-// Einzelne Ansichten der Ansichten
-// @Simon: Statt dieser Funktionen sollten die
-// Komponenten importiert werden, die dann unten bei der Switch
-// geladen werden
-
-function Details() {
-    return <Recipe></Recipe>
-}
-
-function Home() {
-    return <Recipes></Recipes>
-}
-
 const App: FC = () => {
     const classes = useStyles()
+
+    useEffect(() => {
+        index.search('pfann').then(result => {
+            console.log(result.hits)
+        })
+        console.log('hi')
+    }, [])
 
     return (
         <Router>
             <ThemeProvider theme={responsiveTheme}>
                 <CssBaseline />
-
                 <Container maxWidth="lg">
-                    <AppBar position="fixed">
-                        <Toolbar>
-                            <Typography variant="h6" noWrap>
-                                Projektvorlage
-                            </Typography>
-                            <Button>
-                                <Link to="/"> Home </Link>
-                            </Button>
-                            <Button>
-                                <Link to="/details"> Details </Link>
-                            </Button>
-                            <Button>
-                                <Link to="/create"> Create </Link>
-                            </Button>
-                            <Button>
-                                <Link to="/edit"> Edit </Link>
-                            </Button>
-                        </Toolbar>
-                    </AppBar>
-
-                    <div className={classes.main}>
-                        <Switch>
-                            <Route path="/details">
-                                <Details />
-                            </Route>
-                            <Route path="/create">
-                                <CreateRecipe />
-                            </Route>
-                            <Route path="/edit">
-                                <EditRecipe />
-                            </Route>
-                            <Route path="/">
-                                <Home />
-                            </Route>
-                        </Switch>
-                    </div>
+                    <TopBar />
+                    <div className={classes.main}>{Routes}</div>
                 </Container>
             </ThemeProvider>
         </Router>
