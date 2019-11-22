@@ -1,11 +1,12 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
+import Create from '../Components/Create/Create'
+import Details from '../Components/Details/Details'
+import Edit from '../Components/Edit/Edit'
+import Home from '../Components/Home/Home'
+
 //Import Komponenten
-import { Create } from '../Components/Create'
-import { Details } from '../Components/Details'
-import { Edit } from '../Components/Edit'
-import { Home } from '../Components/Home'
 
 const RoutePaths = {
     HOME: '/',
