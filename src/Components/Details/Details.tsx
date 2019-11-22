@@ -2,9 +2,9 @@ import { Card, CardContent, CardHeader, Grid, Typography } from '@material-ui/co
 import React from 'react'
 
 import RecipeImage from '../../img/pizza.jpg'
-import { imageStyle } from '../Home/Recipes'
+import { imageStyle } from '../Home/Home'
 
-const Recipe = () => (
+const Details = () => (
     <Card>
         <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -58,4 +58,4 @@ const Recipe = () => (
     </Card>
 )
 
-export default Recipe
+export default Details

@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, Grid, IconButton, TextField } from '@mat
 import React from 'react'
 
 import RecipeImage from '../../img/pizza.jpg'
-import { imageStyle } from '../Home/Recipes'
+import { imageStyle } from '../Home/Home'
 const Edit = () => (
     <Card>
         <Grid container spacing={2}>

@@ -3,7 +3,7 @@ import React from 'react'
 
 import RecipeImage from '../../img/pizza.jpg'
 export const imageStyle = { width: '100%' }
-const Recipes = () => (
+const Home = () => (
     <Grid container spacing={2} justify="center">
         {['Pfannkuchen', 'Pizza', 'Salat', 'Nudeln mit Tomatensauce', 'Burger'].map(recipe => (
             <Grid key={recipe} item xs={12} md={6} lg={4}>
@@ -23,4 +23,4 @@ const Recipes = () => (
     </Grid>
 )
 
-export default Recipes
+export default Home
