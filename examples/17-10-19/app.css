@@ -1,0 +1,13 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+/* app.css */
+p {
+    border-left: 2px solid black;
+    padding: 5px;
+    margin: 5px;
+
+}
+
+body { font-family: sans-serif; padding: 1em; }
+.ais-SearchBox { margin: 1em 0; }
