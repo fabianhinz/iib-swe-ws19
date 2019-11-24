@@ -6,28 +6,21 @@ import {
     Container,
     createStyles,
     Grid,
-    InputBase,
     makeStyles,
     Toolbar,
-    Typography,
 } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import { fade } from '@material-ui/core/styles'
 import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import SearchIcon from '@material-ui/icons/Search'
 import React, { FC } from 'react'
 
 import logo from '../icons/logo.svg'
 import { responsiveTheme } from '../theme'
+import { Search } from './Search/Search'
 
 const useStyles = makeStyles(theme =>
     createStyles({
         root: {
             flexGrow: 1,
-        },
-
-        searchIcon: {
-            marginRight: theme.spacing(1),
         },
 
         main: {
@@ -48,19 +41,7 @@ const App: FC = () => {
             <Container maxWidth="lg">
                 <AppBar position="absolute">
                     <Toolbar>
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <SearchIcon />
-                                <Search />
-                            </div>
-                            <InputBase
-                                placeholder="Search…"
-                                inputProps={{ 'aria-label': 'search' }}
-                            />
-                        </div>
-                        <Typography variant="h6" noWrap>
-                            Projekt TeamDone
-                        </Typography>
+                        <Search />
                     </Toolbar>
                 </AppBar>
 
