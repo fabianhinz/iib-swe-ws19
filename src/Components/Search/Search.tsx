@@ -11,10 +11,14 @@ const styleSearch = {
     marginLeft: 20,
     width: '50%',
     'background-color': '#55c2e3',
+    border: '2px solid black',
 }
 
 const styleSearchIcon = {
     marginRight: 10,
+}
+const styleDiv = {
+    display: 'inline-block',
 }
 
 export class Search extends React.Component {
@@ -22,9 +26,12 @@ export class Search extends React.Component {
     render() {
         return (
             <div style={styleSearch}>
-                <SearchIcon />
-
-                <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+                <div style={styleDiv}>
+                    <SearchIcon />
+                </div>
+                <div style={styleDiv}>
+                    <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+                </div>
             </div>
         )
     }

@@ -1,21 +1,18 @@
-/* eslint-disable no-redeclare */
-import {
-    AppBar,
-    Card,
-    CardHeader,
-    Container,
-    createStyles,
-    Grid,
-    makeStyles,
-    Toolbar,
-} from '@material-ui/core'
+import { Container, createStyles, makeStyles } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
-import React, { FC } from 'react'
+import algoliasearch from 'algoliasearch/lite'
+import React, { FC, useEffect } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import logo from '../icons/logo.svg'
+import Routes from '../Routes/Routes'
 import { responsiveTheme } from '../theme'
 import { Search } from './Search/Search'
+import TopBar from './TopBar'
+
+const searchClient = algoliasearch('OQ8JBQL1SQ', '685ad40e0ddfa41ec3b7bf9605294351')
+export const index = searchClient.initIndex('recipes')
 
 const useStyles = makeStyles(theme =>
     createStyles({
@@ -34,30 +31,24 @@ const useStyles = makeStyles(theme =>
 const App: FC = () => {
     const classes = useStyles()
 
+    useEffect(() => {
+        index.search('pfann').then(result => {
+            console.log(result.hits)
+        })
+        console.log('hi')
+    }, [])
+
     return (
-        <ThemeProvider theme={responsiveTheme}>
-            <CssBaseline />
+        <Router>
+            <ThemeProvider theme={responsiveTheme}>
+                <CssBaseline />
+                <Container maxWidth="lg">
+                    <TopBar />
 
-            <Container maxWidth="lg">
-                <AppBar position="absolute">
-                    <Toolbar>
-                        <Search />
-                    </Toolbar>
-                </AppBar>
-
-                <div className={classes.main}>
-                    <Grid container spacing={2} justify="center">
-                        {['Empanadas', 'Salz', 'Salat', 'Nudeln mit Tomatensauce'].map(recipe => (
-                            <Grid key={recipe} item xs={12} md={6} lg={4}>
-                                <Card>
-                                    <CardHeader title={recipe} />
-                                </Card>
-                            </Grid>
-                        ))}
-                    </Grid>
-                </div>
-            </Container>
-        </ThemeProvider>
+                    <div className={classes.main}>{Routes}</div>
+                </Container>
+            </ThemeProvider>
+        </Router>
     )
 }
 
