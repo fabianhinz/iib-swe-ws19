@@ -6,7 +6,7 @@ import 'firebase/performance'
 import firebase from 'firebase/app'
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyD2JrQImlrqCWv749L52Z8FM6WQd0B88fs',
+    apiKey: 'AIzaSyBimMnf-n3EX8FuQLePP3hbng9463Ey-X0',
     authDomain: 'iib-swe-ws19.firebaseapp.com',
     databaseURL: 'https://iib-swe-ws19.firebaseio.com',
     projectId: 'iib-swe-ws19',
@@ -38,4 +38,5 @@ export const FirebaseService = {
     createDateFromTimestamp,
     incrementBy,
     performance,
+    firebaseConfig,
 }
