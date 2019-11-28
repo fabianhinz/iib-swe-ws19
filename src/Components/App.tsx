@@ -19,7 +19,7 @@ import { responsiveTheme } from '../theme'
 const useStyles = makeStyles(theme =>
     createStyles({
         main: {
-            height: '50vh',
+            height: '90vh',
             background: `url(${logo}) no-repeat center / 200px`,
             marginTop: theme.spacing(10),
         },
@@ -34,7 +34,7 @@ const App: FC = () => {
             <CssBaseline />
 
             <Container maxWidth="lg">
-                <AppBar position="fixed">
+                <AppBar color="secondary" position="fixed">
                     <Toolbar>
                         <Typography variant="h6" noWrap>
                             Projektvorlage
