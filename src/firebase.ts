@@ -38,5 +38,4 @@ export const FirebaseService = {
     createDateFromTimestamp,
     incrementBy,
     performance,
-    firebaseConfig,
 }

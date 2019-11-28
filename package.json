@@ -1,78 +1,63 @@
 {
-  "name": "recipehandler",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.4.3",
-    "@material-ui/icons": "^4.4.3",
-    "@material-ui/lab": "^4.0.0-alpha.27",
-    "@types/jest": "24.0.18",
-    "@types/node": "12.7.4",
-    "@types/react": "16.9.2",
-    "@types/react-dom": "16.9.0",
-    "@types/react-dropzone": "^5.1.0",
-    "@types/react-router-dom": "^4.3.5",
-    "@types/react-swipeable-views": "^0.13.0",
-    "algoliasearch": "^3.35.1",
-    "browser-image-compression": "^1.0.6",
-    "clipboard-copy": "^3.1.0",
-    "clsx": "^1.0.4",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-simple-import-sort": "^4.0.0",
-    "firebase": "^6.6.0",
-    "mdi-material-ui": "^6.7.0",
-    "notistack": "^0.9.0",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^1.18.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-draggable": "^4.0.3",
-    "react-dropzone": "^10.1.8",
-    "react-markdown": "^4.2.2",
-    "react-perfect-scrollbar": "^1.5.3",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.1.2",
-    "react-swipeable-views": "^0.13.3",
-    "typeface-roboto": "0.0.75",
-    "typescript": "3.6.2"
-  },
-  "scripts": {
-    "dev:install": "npm install",
-    "dev:cra": "react-scripts start",
-    "start": "run-s dev:*",
-    "build:cra": "react-scripts build",
-    "build": "run-s dev:install build:cra"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/algoliasearch": "^3.34.5",
-    "@types/react-instantsearch-dom": "^5.2.6"
-  },
-  "description": "1. ~~GitHub Education aktivieren~~ **OPTIONAL**\r 2. Gitkraken herunterladen und installieren >> https://www.gitkraken.com/\r 3. Gitkraken mit GitHub Account verknüpfen\r 4. Visual Studio Code installieren >> https://code.visualstudio.com/\r 5. Extensions installieren (via PowerShell) - setzt voraus dass Visual Studio Code im 'Path' auffindbar ist - siehe VS Code Dokumentation [hier](https://code.visualstudio.com/docs/setup/setup-overview)\r ```\r code --install-extension aaron-bond.better-comments\r code --install-extension azemoh.one-monokai\r code --install-extension CoenraadS.bracket-pair-colorizer-2\r code --install-extension dbaeumer.vscode-eslint\r code --install-extension eg2.vscode-npm-script\r code --install-extension esbenp.prettier-vscode\r code --install-extension Gruntfuggly.todo-tree\r code --install-extension msjsdiag.debugger-for-chrome\r code --install-extension PKief.material-icon-theme\r code --install-extension toba.vsfire\r code --install-extension vincaslt.highlight-matching-tag\r ```\r 6. Git installieren >> https://git-scm.com/downloads\r 7. Projektvorlage forken und den Fork klonen (mit Gitkraken oder via PowerShell)\r 8. Nodejs installieren via Windows Installer >> https://nodejs.org/en/download/current/\r 9. Dependencies installieren (via PowerShell)- **wichtig** - ihr könnt folgende Befehle lediglich dann in der PowerShell eingeben, wenn ihr im Verzeichnis des Projekts seit\r ```\r npm install\r ```\r 10. Starten der Anwendung mit \r ```\r npm start\r ```",
-  "main": "index.js",
-  "directories": {
-    "example": "examples"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/annikakuntz/iib-swe-ws19.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/annikakuntz/iib-swe-ws19/issues"
-  },
-  "homepage": "https://github.com/annikakuntz/iib-swe-ws19#readme"
+    "name": "recipehandler",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@material-ui/core": "^4.4.3",
+        "@material-ui/icons": "^4.4.3",
+        "@material-ui/lab": "^4.0.0-alpha.27",
+        "@types/jest": "24.0.18",
+        "@types/node": "12.7.4",
+        "@types/react": "16.9.2",
+        "@types/react-dom": "16.9.0",
+        "@types/react-dropzone": "^5.1.0",
+        "@types/react-router-dom": "^4.3.5",
+        "@types/react-swipeable-views": "^0.13.0",
+        "algoliasearch": "^3.35.1",
+        "browser-image-compression": "^1.0.6",
+        "clipboard-copy": "^3.1.0",
+        "clsx": "^1.0.4",
+        "eslint-config-prettier": "^6.3.0",
+        "eslint-plugin-prettier": "^3.1.1",
+        "eslint-plugin-simple-import-sort": "^4.0.0",
+        "firebase": "^6.6.0",
+        "mdi-material-ui": "^6.7.0",
+        "notistack": "^0.9.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^1.18.2",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
+        "react-draggable": "^4.0.3",
+        "react-dropzone": "^10.1.8",
+        "react-markdown": "^4.2.2",
+        "react-perfect-scrollbar": "^1.5.3",
+        "react-router-dom": "^5.1.2",
+        "react-scripts": "3.1.2",
+        "react-swipeable-views": "^0.13.3",
+        "typeface-roboto": "0.0.75",
+        "typescript": "3.6.2"
+    },
+    "scripts": {
+        "dev:install": "npm install",
+        "dev:cra": "react-scripts start",
+        "start": "run-s dev:*",
+        "build:cra": "react-scripts build",
+        "build": "run-s dev:install build:cra"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/algoliasearch": "^3.34.5",
+        "@types/react-instantsearch-dom": "^5.2.6"
+    }
 }
