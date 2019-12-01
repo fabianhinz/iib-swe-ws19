@@ -14,7 +14,7 @@ const styleSearch = makeStyles(theme => ({
     search: {
         position: 'relative',
         borderRadius: 1,
-        width: '20%',
+        width: '40%',
         backgroundColor: fade(theme.palette.common.white, 0.2),
     },
     searchIcon: {
@@ -24,6 +24,7 @@ const styleSearch = makeStyles(theme => ({
     styleDiv: {
         display: 'inline-block',
         float: 'left',
+        //overflow: 'hidden',
     },
 }))
 

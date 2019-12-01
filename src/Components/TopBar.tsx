@@ -1,16 +1,30 @@
-import { AppBar, Toolbar } from '@material-ui/core'
+import { AppBar, createStyles, makeStyles, Toolbar } from '@material-ui/core'
 import React from 'react'
 
 import Navigation from '../Routes/Navigation'
+import Login from './Login/Login'
 import { Search } from './Search/Search'
 
-const TopBar = () => (
-    <AppBar position="fixed">
-        <Toolbar>
-            <Navigation />
-            <Search />
-        </Toolbar>
-    </AppBar>
+const useStyles = makeStyles(() =>
+    createStyles({
+        toolbar: {
+            display: 'flex',
+            justifyContent: 'space-between',
+        },
+    })
 )
+
+const TopBar = () => {
+    const classes = useStyles()
+    return (
+        <AppBar position="fixed">
+            <Toolbar className={classes.toolbar}>
+                <Navigation />
+                <Search />
+                <Login />
+            </Toolbar>
+        </AppBar>
+    )
+}
 
 export default TopBar
