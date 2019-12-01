@@ -5,34 +5,38 @@ import { createStyles, InputBase } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 import { fade } from '@material-ui/core/styles'
 import SearchIcon from '@material-ui/icons/Search'
+import { relative } from 'path'
 import React from 'react'
 
-const styleSearch = {
-    marginLeft: 20,
-    width: '50%',
-    'background-color': '#55c2e3',
-    border: '2px solid black',
-}
+import { index } from '../App'
 
-const styleSearchIcon = {
-    marginRight: 10,
-}
-const styleDiv = {
-    display: 'inline-block',
-}
+const styleSearch = makeStyles(theme => ({
+    search: {
+        position: 'relative',
+        borderRadius: 1,
+        width: '20%',
+        backgroundColor: fade(theme.palette.common.white, 0.2),
+    },
+    searchIcon: {
+        marginRight: 2,
+        float: 'left',
+    },
+    styleDiv: {
+        display: 'inline-block',
+        float: 'left',
+    },
+}))
 
-export class Search extends React.Component {
-    // React components implement a render() method that takes input data and returns what to display
-    render() {
-        return (
-            <div style={styleSearch}>
-                <div style={styleDiv}>
-                    <SearchIcon />
-                </div>
-                <div style={styleDiv}>
-                    <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
-                </div>
+export const Search = () => {
+    const classes = styleSearch()
+    return (
+        <div className={classes.search}>
+            <div className={classes.searchIcon}>
+                <SearchIcon />
             </div>
-        )
-    }
+            <div className={classes.styleDiv}>
+                <InputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+            </div>
+        </div>
+    )
 }
