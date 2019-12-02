@@ -1,9 +1,9 @@
 import { AppBar, createStyles, makeStyles, Toolbar } from '@material-ui/core'
 import React from 'react'
 
-import Navigation from '../Routes/Navigation'
-import Login from './Login/Login'
-import { Search } from './Search/Search'
+import Navigation from '../../Routes/Navigation'
+import Login from '../Login/Login'
+import { Search } from '../Search/Search'
 
 const useStyles = makeStyles(() =>
     createStyles({
