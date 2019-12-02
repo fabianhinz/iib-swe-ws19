@@ -10,13 +10,14 @@ import logo from '../icons/logo.svg'
 import Routes from '../Routes/Routes'
 import { responsiveTheme } from '../theme'
 import TopBar from './TopBar'
+
 const searchClient = algoliasearch('OQ8JBQL1SQ', '685ad40e0ddfa41ec3b7bf9605294351')
 export const index = searchClient.initIndex('recipes')
 
 const useStyles = makeStyles(theme =>
     createStyles({
         main: {
-            height: '50vh',
+            height: '80vh',
             background: `url(${logo}) no-repeat center / 200px`,
             marginTop: theme.spacing(10),
         },
