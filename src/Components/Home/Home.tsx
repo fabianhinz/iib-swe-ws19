@@ -12,7 +12,7 @@ import SaisonsDialogAnzeige from './../saisons/Saisons'
 export const imageStyle = { width: '100%' }
 const useStyles = makeStyles(theme =>
     createStyles({
-        home:{ 
+        home: {
             display: 'flex',
             height: '100%',
             flexDirection: 'column',
@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme =>
 )
 
 const Home: FC = () => {
-
     const classes = useStyles()
 
     return (
