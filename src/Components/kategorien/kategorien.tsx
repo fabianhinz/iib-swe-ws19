@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography'
 import CategoryIcon from '@material-ui/icons/Category'
 import React from 'react'
 
+import kategorienFilter from './../kategorien/kategorienFunktion'
+
 const kategorien = [
     'Beilage',
     'Hauptgericht',
@@ -54,10 +56,7 @@ function DialogForKategorie(props: KategorieDialog) {
             <DialogTitle id="simple-dialog-title">Kategorien</DialogTitle>
             <List>
                 {kategorien.map(kategorien => (
-                    <ListItem
-                        button
-                        onClick={() => handleListItemClick(kategorien)}
-                        key={kategorien}>
+                    <ListItem button onClick={() => kategorienFilter()} key={kategorien}>
                         <ListItemAvatar>
                             <Avatar className={classes.avatar}>
                                 <CategoryIcon />
