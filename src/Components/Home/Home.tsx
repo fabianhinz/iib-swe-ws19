@@ -7,9 +7,8 @@ import { FirebaseService } from '../../firebase'
 import RecipeImage from '../../img/pizza.jpg'
 import DauerDialogAnzeige from './../dauer/Zubereitungszeit'
 import ErnaehrungDialogAnzeige from './../ernaehrung/Ernaehrung'
-import KategorienDialogAnzeige from './../kategorien/kategorien'
-import kategorienFilter from './../kategorien/kategorienFunktion'
 import SaisonsDialogAnzeige from './../saisons/Saisons'
+import ArtDialogAnzeige from './../kategorien/kategorien'
 
 export const imageStyle = { width: '100%' }
 const useStyles = makeStyles(theme =>
@@ -39,7 +38,7 @@ const Home: FC = () => {
 
     useEffect(() => {
         FirebaseService.firestore.collection('recipes').onSnapshot(querySnaphot => {
-            setRecipes(querySnaphot.docs.map(doc => doc.data()) as Recipe[])
+            setRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as Recipe[])
         })
     }, [])
 
@@ -63,7 +62,7 @@ const Home: FC = () => {
                 ))}
             </Grid>
             <Box className={classes.kategorien}>
-                <KategorienDialogAnzeige></KategorienDialogAnzeige>
+                <ArtDialogAnzeige></ArtDialogAnzeige>
                 <ErnaehrungDialogAnzeige></ErnaehrungDialogAnzeige>
                 <DauerDialogAnzeige></DauerDialogAnzeige>
                 <SaisonsDialogAnzeige></SaisonsDialogAnzeige>
