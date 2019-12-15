@@ -5,6 +5,7 @@ import Create from '../Components/Create/Create'
 import Details from '../Components/Details/Details'
 import Edit from '../Components/Edit/Edit'
 import Home from '../Components/Home/Home'
+import Results from '../Components/Search/Results'
 
 //Import Komponenten
 
@@ -13,6 +14,7 @@ const RoutePaths = {
     EDIT: '/edit',
     DETAILS: '/details',
     CREATE: '/create',
+    RESULTS: '/results',
 }
 
 const Routes = (
@@ -25,6 +27,9 @@ const Routes = (
         </Route>
         <Route path={RoutePaths.EDIT}>
             <Edit />
+        </Route>
+        <Route path={RoutePaths.RESULTS}>
+            <Results />
         </Route>
         <Route path={RoutePaths.HOME}>
             <Home />
