@@ -119,6 +119,7 @@ export function DialogForTime(props: KategorieDialog) {
         </Dialog>
     )
 }
+/*
 export function DialogForIngredient(props: KategorieDialog) {
     const classes = useStyles()
     const { onClose, selectedValue, open } = props
@@ -156,7 +157,8 @@ export function DialogForIngredient(props: KategorieDialog) {
             </List>
         </Dialog>
     )
-}
+} */
+/*
 export function DialogForSeason(props: KategorieDialog) {
     const classes = useStyles()
     const { onClose, selectedValue, open } = props
@@ -195,7 +197,8 @@ export function DialogForSeason(props: KategorieDialog) {
         </Dialog>
     )
 }
-
+*/
+/*
 export default function ArtDialogAnzeige() {
     const [open, setOpen] = React.useState(false)
     const [selectedValue, setSelectedValue] = React.useState()
@@ -258,3 +261,4 @@ export default function ArtDialogAnzeige() {
         </div>
     )
 }
+*/

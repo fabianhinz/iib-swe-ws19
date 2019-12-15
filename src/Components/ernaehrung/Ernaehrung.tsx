@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography'
 import FastfoodIcon from '@material-ui/icons/Fastfood'
 import React from 'react'
 
-const ernaehrung = ['Fleisch', 'Vegetarisch']
+const ernaehrung = ['Hauptgericht', 'Beilage', 'Dessert']
 const useStyles = makeStyles({
     avatar: {
         backgroundColor: blue[100],
@@ -29,10 +29,12 @@ export interface ErnaehrungDialog {
 
 function DialogForErnaehrung(props: ErnaehrungDialog) {
     const classes = useStyles()
-    const { onClose, selectedValue, open } = props
+    const { onClose, open } = props
+    const [selectedValue, setSelectedValue] = React.useState(ernaehrung[1])
 
-    const handleClose = () => {
+    const handleClose = (value: string) => {
         onClose(selectedValue)
+        setSelectedValue(value)
     }
 
     const handleListItemClick = (value: string) => {

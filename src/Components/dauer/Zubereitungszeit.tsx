@@ -13,11 +13,11 @@ import ScheduleIcon from '@material-ui/icons/Schedule'
 import React from 'react'
 
 const dauer = [
-    'bis 15 Minute',
-    'bis 30 Minute',
-    'bis 1 Stunde',
-    'bis 3 Stunden',
-    'bis 5 Stunden',
+    '< 15 Minuten',
+    '< 30 Minuten',
+    '< 1 Stunde',
+    '< 3 Stunden',
+    '< 5 Stunden',
     'ganzen Tag',
 ]
 const useStyles = makeStyles({
@@ -81,7 +81,7 @@ export default function DauerDialogAnzeige() {
     return (
         <div>
             <Typography variant="subtitle1" style={{ fontSize: '80%' }}>
-                Selected:{selectedValue}
+                Selected: {selectedValue}
             </Typography>
             <br />
             <Fab color="primary" aria-label="art" onClick={handleClickOpen}>

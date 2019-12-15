@@ -1,14 +1,16 @@
 import { Card, CardContent, CardHeader, Grid } from '@material-ui/core'
 import { Box, Container, createStyles } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { getThemeProps } from '@material-ui/styles'
 import React, { FC, useEffect, useState } from 'react'
 
 import { FirebaseService } from '../../firebase'
 import RecipeImage from '../../img/pizza.jpg'
 import DauerDialogAnzeige from './../dauer/Zubereitungszeit'
 import ErnaehrungDialogAnzeige from './../ernaehrung/Ernaehrung'
+import DialogForErnaehrung from './../ernaehrung/Ernaehrung'
+//import ArtDialogAnzeige from './../kategorien/kategorien'
 import SaisonsDialogAnzeige from './../saisons/Saisons'
-import ArtDialogAnzeige from './../kategorien/kategorien'
 
 export const imageStyle = { width: '100%' }
 const useStyles = makeStyles(theme =>
@@ -30,16 +32,21 @@ const useStyles = makeStyles(theme =>
 
 interface Recipe {
     Title: string
+    Categorie: string
 }
 
-const Home: FC = () => {
+const Home: FC = props => {
     const [recipes, setRecipes] = useState<Recipe[]>([])
     const classes = useStyles()
 
+    //TODO Selected Kategorie statt 'Hauptgericht'
     useEffect(() => {
-        FirebaseService.firestore.collection('recipes').onSnapshot(querySnaphot => {
-            setRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as Recipe[])
-        })
+        FirebaseService.firestore
+            .collection('recipes')
+            .where('Categorie', 'array-contains', 'Hauptgericht')
+            .onSnapshot(querySnaphot => {
+                setRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as Recipe[])
+            })
     }, [])
 
     return (
@@ -54,7 +61,7 @@ const Home: FC = () => {
                                 </Grid>
                                 <Grid item xs={8}>
                                     <CardHeader title={recipe.Title} />
-                                    <CardContent>Erstellt am 01.01.1970</CardContent>
+                                    <CardContent>{props.children}</CardContent>
                                 </Grid>
                             </Grid>
                         </Card>
@@ -62,8 +69,7 @@ const Home: FC = () => {
                 ))}
             </Grid>
             <Box className={classes.kategorien}>
-                <ArtDialogAnzeige></ArtDialogAnzeige>
-                <ErnaehrungDialogAnzeige></ErnaehrungDialogAnzeige>
+                <DialogForErnaehrung />
                 <DauerDialogAnzeige></DauerDialogAnzeige>
                 <SaisonsDialogAnzeige></SaisonsDialogAnzeige>
             </Box>
