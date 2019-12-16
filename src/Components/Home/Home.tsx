@@ -1,16 +1,11 @@
 import { Card, CardContent, CardHeader, Grid } from '@material-ui/core'
-import { Box, Container, createStyles } from '@material-ui/core'
+import { Box, Button, Container, createStyles } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { getThemeProps } from '@material-ui/styles'
 import React, { FC, useEffect, useState } from 'react'
 
 import { FirebaseService } from '../../firebase'
 import RecipeImage from '../../img/pizza.jpg'
-import DauerDialogAnzeige from './../dauer/Zubereitungszeit'
-import ErnaehrungDialogAnzeige from './../ernaehrung/Ernaehrung'
-import DialogForErnaehrung from './../ernaehrung/Ernaehrung'
-//import ArtDialogAnzeige from './../kategorien/kategorien'
-import SaisonsDialogAnzeige from './../saisons/Saisons'
 
 export const imageStyle = { width: '100%' }
 const useStyles = makeStyles(theme =>
@@ -39,11 +34,11 @@ const Home: FC = props => {
     const [recipes, setRecipes] = useState<Recipe[]>([])
     const classes = useStyles()
 
-    //TODO Selected Kategorie statt 'Hauptgericht'
     useEffect(() => {
         FirebaseService.firestore
             .collection('recipes')
-            .where('Categorie', 'array-contains', 'Hauptgericht')
+            .orderBy('Creation Date', 'desc')
+            .limit(6)
             .onSnapshot(querySnaphot => {
                 setRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as Recipe[])
             })
@@ -68,11 +63,6 @@ const Home: FC = props => {
                     </Grid>
                 ))}
             </Grid>
-            <Box className={classes.kategorien}>
-                <DialogForErnaehrung />
-                <DauerDialogAnzeige></DauerDialogAnzeige>
-                <SaisonsDialogAnzeige></SaisonsDialogAnzeige>
-            </Box>
         </Container>
     )
 }
