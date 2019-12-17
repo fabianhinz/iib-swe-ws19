@@ -7,6 +7,7 @@ import { fade } from '@material-ui/core/styles'
 import SearchIcon from '@material-ui/icons/Search'
 import { relative } from 'path'
 import React, { KeyboardEvent, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { index } from '../App'
 
@@ -28,15 +29,22 @@ const styleSearch = makeStyles(theme => ({
     },
 }))
 
-export const Search = () => {
+export const Search = ({
+    searchQuery,
+    searchHandleQuery,
+}: {
+    searchQuery: String
+    searchHandleQuery: any
+}) => {
     const classes = styleSearch()
-
+    const history = useHistory()
     //input variable, setInput Funktion. Man kann die Funktio setInput aufrufen und dann wird den Wert input gesetz
-    const [input, setInput] = useState('')
+    // const [input, setInput] = useState('')
     //onChange : jedes mal, dass der Inhalt in Inputbase geändert wird, Dann wird die Funktion
     const callResult = (e: KeyboardEvent) => {
         if (e.key === 'Enter') {
-            console.log('CallResult: ' + input)
+            // console.log('CallResult: ' + input)
+            history.push('/results')
         }
     }
 
@@ -48,8 +56,11 @@ export const Search = () => {
             <div className={classes.styleDiv}>
                 <InputBase
                     placeholder="Search…"
+                    value={searchQuery}
+                    // onChange={searchHandleQuery}
                     onKeyDown={e => callResult(e)}
-                    onChange={e => setInput(e.target.value)}
+                    onChange={e => searchHandleQuery(e.target.value)}
+                    // onChange={e => setInput(e.target.value)}
                     inputProps={{ 'aria-label': 'search' }}
                 />
             </div>

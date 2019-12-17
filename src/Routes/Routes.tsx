@@ -17,7 +17,7 @@ const RoutePaths = {
     RESULTS: '/results',
 }
 
-const Routes = (
+const Routes = ({ searchQuery }: { searchQuery: String }) => (
     <Switch>
         <Route path={RoutePaths.DETAILS}>
             <Details />
@@ -28,9 +28,9 @@ const Routes = (
         <Route path={RoutePaths.EDIT}>
             <Edit />
         </Route>
-        <Route path={RoutePaths.RESULTS}>
-            <Results />
-        </Route>
+        <Route
+            path={RoutePaths.RESULTS}
+            render={() => <Results searchQuery={searchQuery} />}></Route>
         <Route path={RoutePaths.HOME}>
             <Home />
         </Route>

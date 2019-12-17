@@ -14,13 +14,19 @@ const useStyles = makeStyles(() =>
     })
 )
 
-const TopBar = () => {
+const TopBar = ({
+    searchQuery,
+    searchHandleQuery,
+}: {
+    searchQuery: String
+    searchHandleQuery: any
+}) => {
     const classes = useStyles()
     return (
         <AppBar position="fixed">
             <Toolbar className={classes.toolbar}>
                 <Navigation />
-                <Search />
+                <Search searchQuery={searchQuery} searchHandleQuery={searchHandleQuery} />
                 <Login />
             </Toolbar>
         </AppBar>
