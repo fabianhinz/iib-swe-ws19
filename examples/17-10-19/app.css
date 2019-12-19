@@ -8,3 +8,6 @@ p {
     margin: 5px;
 
 }
+
+body { font-family: sans-serif; padding: 1em; }
+.ais-SearchBox { margin: 1em 0; }

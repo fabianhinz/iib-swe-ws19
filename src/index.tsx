@@ -1,4 +1,6 @@
 import 'typeface-roboto'
+import 'typeface-inconsolata'
+import 'typeface-quicksand'
 
 import React from 'react'
 import ReactDOM from 'react-dom'

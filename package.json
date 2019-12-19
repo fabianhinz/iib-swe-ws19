@@ -13,6 +13,7 @@
         "@types/react-dropzone": "^5.1.0",
         "@types/react-router-dom": "^4.3.5",
         "@types/react-swipeable-views": "^0.13.0",
+        "algoliasearch": "^3.35.1",
         "browser-image-compression": "^1.0.6",
         "clipboard-copy": "^3.1.0",
         "clsx": "^1.0.4",
@@ -30,7 +31,7 @@
         "react-dropzone": "^10.1.8",
         "react-markdown": "^4.2.2",
         "react-perfect-scrollbar": "^1.5.3",
-        "react-router-dom": "^5.0.1",
+        "react-router-dom": "^5.1.2",
         "react-scripts": "3.1.2",
         "react-swipeable-views": "^0.13.3",
         "typeface-inconsolata": "0.0.72",
@@ -56,5 +57,9 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
+    },
+    "devDependencies": {
+        "@types/algoliasearch": "^3.34.5",
+        "@types/react-instantsearch-dom": "^5.2.6"
     }
 }
