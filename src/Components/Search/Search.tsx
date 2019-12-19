@@ -1,15 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-//Hallo das wird die Testseite Search
-import { tsAnyKeyword } from '@babel/types'
-import { createStyles, InputBase } from '@material-ui/core'
+import { InputBase } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 import { fade } from '@material-ui/core/styles'
 import SearchIcon from '@material-ui/icons/Search'
-import { relative } from 'path'
-import React, { KeyboardEvent, useState } from 'react'
+import React, { KeyboardEvent } from 'react'
 import { useHistory } from 'react-router-dom'
-
-import { index } from '../App'
 
 const styleSearch = makeStyles(theme => ({
     search: {
@@ -25,25 +19,21 @@ const styleSearch = makeStyles(theme => ({
     styleDiv: {
         display: 'inline-block',
         float: 'left',
-        //overflow: 'hidden',
     },
 }))
 
 export const Search = ({
     searchQuery,
-    searchHandleQuery,
+    Onsearchquerychange,
 }: {
     searchQuery: String
-    searchHandleQuery: any
+    Onsearchquerychange: any
 }) => {
     const classes = styleSearch()
     const history = useHistory()
-    //input variable, setInput Funktion. Man kann die Funktio setInput aufrufen und dann wird den Wert input gesetz
-    // const [input, setInput] = useState('')
-    //onChange : jedes mal, dass der Inhalt in Inputbase geändert wird, Dann wird die Funktion
+
     const callResult = (e: KeyboardEvent) => {
         if (e.key === 'Enter') {
-            // console.log('CallResult: ' + input)
             history.push('/results')
         }
     }
@@ -57,10 +47,8 @@ export const Search = ({
                 <InputBase
                     placeholder="Search…"
                     value={searchQuery}
-                    // onChange={searchHandleQuery}
                     onKeyDown={e => callResult(e)}
-                    onChange={e => searchHandleQuery(e.target.value)}
-                    // onChange={e => setInput(e.target.value)}
+                    onChange={e => Onsearchquerychange(e.target.value)}
                     inputProps={{ 'aria-label': 'search' }}
                 />
             </div>

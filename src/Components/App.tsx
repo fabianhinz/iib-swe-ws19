@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import algoliasearch from 'algoliasearch/lite'
 import { SnackbarProvider } from 'notistack'
-import React, { ChangeEvent, FC, SyntheticEvent, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import logo from '../icons/logo.svg'
@@ -30,14 +30,13 @@ const useStyles = makeStyles(theme =>
 const App: FC = () => {
     const classes = useStyles()
     const [searchQuery, setSearchQuery] = useState('')
-
     return (
         <Router>
             <SnackbarProvider>
                 <ThemeProvider theme={responsiveTheme}>
                     <CssBaseline />
                     <Container maxWidth="lg">
-                        <TopBar searchQuery={searchQuery} searchHandleQuery={setSearchQuery} />
+                        <TopBar searchQuery={searchQuery} Onsearchquerychange={setSearchQuery} />
                         <div className={classes.main}>
                             <Routes searchQuery={searchQuery} />
                         </div>
@@ -47,5 +46,4 @@ const App: FC = () => {
         </Router>
     )
 }
-
 export default App

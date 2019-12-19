@@ -7,8 +7,6 @@ import Edit from '../Components/Edit/Edit'
 import Home from '../Components/Home/Home'
 import Results from '../Components/Search/Results'
 
-//Import Komponenten
-
 const RoutePaths = {
     HOME: '/',
     EDIT: '/edit',
@@ -16,7 +14,6 @@ const RoutePaths = {
     CREATE: '/create',
     RESULTS: '/results',
 }
-
 const Routes = ({ searchQuery }: { searchQuery: String }) => (
     <Switch>
         <Route path={RoutePaths.DETAILS}>
@@ -36,5 +33,4 @@ const Routes = ({ searchQuery }: { searchQuery: String }) => (
         </Route>
     </Switch>
 )
-
 export default Routes
