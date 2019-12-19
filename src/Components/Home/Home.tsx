@@ -26,6 +26,7 @@ const useStyles = makeStyles(theme =>
 
 interface Recipe {
     Title: string
+    id: string
 }
 
 const Home: FC = props => {
@@ -39,7 +40,10 @@ const Home: FC = props => {
             .orderBy('Created', 'desc')
             .limit(6)
             .onSnapshot(querySnaphot => {
-                setRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as Recipe[])
+                setRecipes(querySnaphot.docs.flatMap(doc => ({
+                    ...doc.data(),
+                    id: doc.id,
+                })) as Recipe[])
             })
     }, [])
 
@@ -48,7 +52,10 @@ const Home: FC = props => {
             .collection('recipes')
             .orderBy('Title')
             .onSnapshot(querySnaphot => {
-                setAllRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as Recipe[])
+                setAllRecipes(querySnaphot.docs.flatMap(doc => ({
+                    ...doc.data(),
+                    id: doc.id,
+                })) as Recipe[])
             })
     }, [])
 
