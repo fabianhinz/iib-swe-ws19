@@ -1,6 +1,6 @@
 import { Container, createStyles, makeStyles } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { ThemeProvider } from '@material-ui/core/styles'
 import algoliasearch from 'algoliasearch/lite'
 import { SnackbarProvider } from 'notistack'
 import React, { FC, useEffect } from 'react'
