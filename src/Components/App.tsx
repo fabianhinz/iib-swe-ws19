@@ -36,7 +36,7 @@ const App: FC = () => {
             <Container maxWidth="lg">
                 <AppBar color="secondary" position="fixed">
                     <Toolbar>
-                        <Typography variant="h6" noWrap>
+                        <Typography color="primary" variant="h3" noWrap>
                             Projektvorlage
                         </Typography>
                     </Toolbar>
@@ -47,9 +47,14 @@ const App: FC = () => {
                         {['Pfannkuchen', 'Pizza', 'Salat', 'Nudeln mit Tomatensauce'].map(
                             recipe => (
                                 <Grid key={recipe} item xs={12} md={6} lg={4}>
-                                    <Card>
-                                        <CardHeader title={recipe} />
-                                    </Card>
+                                    <Typography color="primary" variant="button" align="center">
+                                        <Card>
+                                            {' '}
+                                            <Typography color="primary">
+                                                <CardHeader title={recipe} />
+                                            </Typography>
+                                        </Card>
+                                    </Typography>
                                 </Grid>
                             )
                         )}
