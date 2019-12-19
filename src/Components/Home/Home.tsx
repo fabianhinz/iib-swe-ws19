@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, Grid } from '@material-ui/core'
+import { Card, CardContent, CardHeader, Grid, Typography } from '@material-ui/core'
 import { Container, createStyles } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import React, { FC, useEffect, useState } from 'react'
@@ -24,17 +24,13 @@ const useStyles = makeStyles(theme =>
     })
 )
 
-interface newRecipe {
-    Title: string
-}
-
-interface allRecipe {
+interface Recipe {
     Title: string
 }
 
 const Home: FC = props => {
-    const [recipes, setRecipes] = useState<newRecipe[]>([])
-    const [allrecipes, setAllRecipes] = useState<allRecipe[]>([])
+    const [recipes, setRecipes] = useState<Recipe[]>([])
+    const [allrecipes, setAllRecipes] = useState<Recipe[]>([])
     const classes = useStyles()
 
     useEffect(() => {
@@ -43,7 +39,7 @@ const Home: FC = props => {
             .orderBy('Created', 'desc')
             .limit(6)
             .onSnapshot(querySnaphot => {
-                setRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as newRecipe[])
+                setRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as Recipe[])
             })
     }, [])
 
@@ -52,13 +48,13 @@ const Home: FC = props => {
             .collection('recipes')
             .orderBy('Title')
             .onSnapshot(querySnaphot => {
-                setAllRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as allRecipe[])
+                setAllRecipes(querySnaphot.docs.flatMap(doc => doc.data()) as Recipe[])
             })
     }, [])
 
     return (
         <Container className={classes.home}>
-            <h1>Zuletzt Hinzugefügt:</h1>
+            <Typography variant="h5">Zuletzt hinzugefügte Rezepte:</Typography>
             <Grid container spacing={2} justify="center">
                 {recipes.map(newrecipe => (
                     <Grid key={newrecipe.Title} item xs={12} md={6} lg={4}>
@@ -75,7 +71,7 @@ const Home: FC = props => {
                     </Grid>
                 ))}
             </Grid>
-            <h1>Alle Rezepte:</h1>
+            <Typography variant="h5">Alle Rezepte:</Typography>
             <Grid container spacing={1} justify="center">
                 {allrecipes.map(allrecipe => (
                     <Grid key={allrecipe.Title} item xs={12} md={6} lg={4}>
