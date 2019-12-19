@@ -12,5 +12,9 @@
         "rules": {
             "prettier/prettier": "warn"
         }
+    },
+    "git.ignoreLimitWarning": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
     }
 }
