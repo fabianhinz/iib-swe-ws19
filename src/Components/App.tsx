@@ -1,6 +1,6 @@
 import { Container, createStyles, makeStyles } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import ThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+import { ThemeProvider } from '@material-ui/core/styles'
 import algoliasearch from 'algoliasearch/lite'
 import { SnackbarProvider } from 'notistack'
 import React, { FC, useState } from 'react'
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme =>
         },
 
         main: {
-            height: '50vh',
+            height: '90vh',
             background: `url(${logo}) no-repeat center / 200px`,
             marginTop: theme.spacing(10),
         },
