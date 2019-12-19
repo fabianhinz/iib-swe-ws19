@@ -1,0 +1,93 @@
+[debug] [2019-11-21T13:13:41.121Z] ----------------------------------------------------------------------
+[debug] [2019-11-21T13:13:41.124Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\victo\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-11-21T13:13:41.124Z] CLI Version:   7.7.0
+[debug] [2019-11-21T13:13:41.124Z] Platform:      win32
+[debug] [2019-11-21T13:13:41.124Z] Node Version:  v12.11.1
+[debug] [2019-11-21T13:13:41.125Z] Time:          Thu Nov 21 2019 14:13:41 GMT+0100 (GMT+01:00)
+[debug] [2019-11-21T13:13:41.125Z] ----------------------------------------------------------------------
+[debug] [2019-11-21T13:13:41.125Z] 
+[debug] [2019-11-21T13:13:41.136Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-11-21T13:13:41.137Z] > authorizing via signed-in user
+[debug] [2019-11-21T13:13:41.137Z] [iam] checking project iib-swe-ws19 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update","firebaserules.releases.create","firebaserules.releases.update","firebaserules.rulesets.create"]
+[debug] [2019-11-21T13:13:41.139Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-11-21T13:13:41.140Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-11-21T13:13:41.309Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-21T13:13:41.330Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/iib-swe-ws19:testIamPermissions  
+
+[debug] [2019-11-21T13:13:41.580Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-21T13:13:41.584Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/iib-swe-ws19  
+ 
+[debug] [2019-11-21T13:13:41.876Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'iib-swe-ws19'...
+[info] 
+[info] i  deploying storage, firestore, functions, hosting
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] +  functions: Finished running predeploy script.
+[debug] [2019-11-21T13:14:05.306Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/iib-swe-ws19  
+ 
+[debug] [2019-11-21T13:14:06.483Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2019-11-21T13:14:06.504Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/iib-swe-ws19:test  
+
+[debug] [2019-11-21T13:14:06.707Z] <<< HTTP RESPONSE 200
+[info] +  storage: rules file storage.rules compiled successfully
+[info] i  firestore: checking firestore.rules for compilation errors...
+[info] i  firestore: reading indexes from firestore.indexes.json...
+[debug] [2019-11-21T13:14:06.783Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/iib-swe-ws19:test  
+
+[debug] [2019-11-21T13:14:10.066Z] <<< HTTP RESPONSE 200
+[info] +  firestore: rules file firestore.rules compiled successfully
+[debug] [2019-11-21T13:14:10.077Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "8"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "algoliasearch": "^3.35.1",
+    "dotenv": "^8.2.0",
+    "firebase-admin": "^8.6.0",
+    "firebase-functions": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/algoliasearch": "^3.34.5",
+    "firebase-functions-test": "^0.1.6",
+    "ts-loader": "^6.2.1",
+    "tslint": "^5.12.0",
+    "typescript": "^3.2.2",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "private": true
+}
+[info] i  functions: ensuring necessary APIs are enabled...
+[debug] [2019-11-21T13:14:10.101Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/iib-swe-ws19/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2019-11-21T13:14:10.102Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/iib-swe-ws19/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2019-11-21T13:14:11.035Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-21T13:14:11.061Z] <<< HTTP RESPONSE 200
+[info] +  functions: all necessary APIs are enabled
+[debug] [2019-11-21T13:14:11.065Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/iib-swe-ws19/adminSdkConfig  
+ 
+[debug] [2019-11-21T13:14:11.332Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-21T13:14:11.336Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/iib-swe-ws19/versions  
+
+[debug] [2019-11-21T13:14:13.211Z] <<< HTTP RESPONSE 200
+[debug] [2019-11-21T13:14:13.217Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/iib-swe-ws19/releases?pageSize=10&pageToken=  
+ 
+[debug] [2019-11-21T13:14:41.332Z] Error: connect ETIMEDOUT 216.58.207.42:443
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1126:14)
+[error] 
+[error] Error: Server Error. connect ETIMEDOUT 216.58.207.42:443
