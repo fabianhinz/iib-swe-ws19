@@ -22,13 +22,12 @@ const styleSearch = makeStyles(theme => ({
     },
 }))
 
-export const Search = ({
-    searchQuery,
-    Onsearchquerychange,
-}: {
+export interface SearchInterface {
     searchQuery: String
-    Onsearchquerychange: any
-}) => {
+    Onsearchquerychange?: any
+}
+
+export const Search = ({ searchQuery, Onsearchquerychange }: SearchInterface) => {
     const classes = styleSearch()
     const history = useHistory()
 

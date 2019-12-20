@@ -6,8 +6,9 @@ import FastfoodIcon from '@material-ui/icons/Fastfood'
 import React, { useEffect, useState } from 'react'
 
 import { index } from '../App'
+import { SearchInterface } from './Search'
 
-const Results = ({ searchQuery }: { searchQuery: String }) => {
+const Results = ({ searchQuery }: SearchInterface) => {
     const [res, setRes] = useState<string[]>([])
     useEffect(() => {
         index.search(searchQuery).then(result => {
@@ -20,7 +21,7 @@ const Results = ({ searchQuery }: { searchQuery: String }) => {
         <List component="nav" aria-label="main mailbox folders">
             <div>
                 {res.map(recipe => (
-                    <ListItem button>
+                    <ListItem key={recipe} button>
                         <ListItemIcon>
                             <FastfoodIcon />
                         </ListItemIcon>
