@@ -1,6 +1,5 @@
 import { IconButton } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
-import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 import HomeIcon from '@material-ui/icons/Home'
 import ImageSearchIcon from '@material-ui/icons/ImageSearch'
@@ -30,11 +29,6 @@ const Navigation = () => (
         <Link to="/edit">
             <IconButton aria-label="edit" size="medium">
                 <EditIcon fontSize="large" />
-            </IconButton>
-        </Link>
-        <Link to="/delete">
-            <IconButton aria-label="delete" size="medium">
-                <DeleteIcon fontSize="large" />
             </IconButton>
         </Link>
     </div>

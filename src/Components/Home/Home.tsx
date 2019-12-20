@@ -1,6 +1,15 @@
-import { Card, CardContent, CardHeader, Grid, Typography } from '@material-ui/core'
+import {
+    Button,
+    Card,
+    CardContent,
+    CardHeader,
+    Grid,
+    IconButton,
+    Typography,
+} from '@material-ui/core'
 import { Container, createStyles } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import DeleteIcon from '@material-ui/icons/DeleteTwoTone'
 import React, { FC, useEffect, useState } from 'react'
 
 import { FirebaseService } from '../../firebase'
@@ -72,6 +81,15 @@ const Home: FC = props => {
                                 </Grid>
                                 <Grid item xs={8}>
                                     <CardHeader title={newrecipe.Title} />
+                                    <IconButton
+                                        onClick={() =>
+                                            FirebaseService.firestore
+                                                .collection('recipes')
+                                                .doc(newrecipe.id)
+                                                .delete()
+                                        }>
+                                        <DeleteIcon></DeleteIcon>
+                                    </IconButton>
                                 </Grid>
                             </Grid>
                         </Card>
@@ -90,6 +108,15 @@ const Home: FC = props => {
                                 <Grid item xs={8}>
                                     <CardHeader title={allrecipe.Title} />
                                     <CardContent>{props.children}</CardContent>
+                                    <IconButton
+                                        onClick={() =>
+                                            FirebaseService.firestore
+                                                .collection('recipes')
+                                                .doc(allrecipe.id)
+                                                .delete()
+                                        }>
+                                        <DeleteIcon></DeleteIcon>
+                                    </IconButton>
                                 </Grid>
                             </Grid>
                         </Card>
