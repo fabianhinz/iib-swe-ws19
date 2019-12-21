@@ -32,7 +32,7 @@
         "react-markdown": "^4.2.2",
         "react-perfect-scrollbar": "^1.5.3",
         "react-router-dom": "^5.1.2",
-        "react-scripts": "3.1.2",
+        "react-scripts": "^3.3.0",
         "react-swipeable-views": "^0.13.3",
         "typeface-inconsolata": "0.0.72",
         "typeface-quicksand": "0.0.71",
