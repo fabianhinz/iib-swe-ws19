@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
 import algoliasearch from 'algoliasearch/lite'
 import { SnackbarProvider } from 'notistack'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useState } from 'react'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import logo from '../icons/logo.svg'
@@ -15,6 +15,10 @@ export const index = searchClient.initIndex('recipes')
 
 const useStyles = makeStyles(theme =>
     createStyles({
+        root: {
+            flexGrow: 1,
+        },
+
         main: {
             height: '90vh',
             background: `url(${logo}) no-repeat center / 200px`,
@@ -25,27 +29,21 @@ const useStyles = makeStyles(theme =>
 
 const App: FC = () => {
     const classes = useStyles()
-
-    useEffect(() => {
-        index.search('pfann').then(result => {
-            console.log(result.hits)
-        })
-        console.log('hi')
-    }, [])
-
+    const [searchQuery, setSearchQuery] = useState('')
     return (
         <Router>
             <SnackbarProvider>
                 <ThemeProvider theme={responsiveTheme}>
                     <CssBaseline />
                     <Container maxWidth="lg">
-                        <TopBar />
-                        <div className={classes.main}>{Routes}</div>
+                        <TopBar searchQuery={searchQuery} Onsearchquerychange={setSearchQuery} />
+                        <div className={classes.main}>
+                            <Routes searchQuery={searchQuery} />
+                        </div>
                     </Container>
                 </ThemeProvider>
             </SnackbarProvider>
         </Router>
     )
 }
-
 export default App

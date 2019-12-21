@@ -5,17 +5,16 @@ import Create from '../Components/Create/Create'
 import Details from '../Components/Details/Details'
 import Edit from '../Components/Edit/Edit'
 import Home from '../Components/Home/Home'
-
-//Import Komponenten
+import Results from '../Components/Search/Results'
 
 const RoutePaths = {
     HOME: '/',
     EDIT: '/edit',
     DETAILS: '/details',
     CREATE: '/create',
+    RESULTS: '/results',
 }
-
-const Routes = (
+const Routes = ({ searchQuery }: { searchQuery: String }) => (
     <Switch>
         <Route path={RoutePaths.DETAILS}>
             <Details />
@@ -26,10 +25,12 @@ const Routes = (
         <Route path={RoutePaths.EDIT}>
             <Edit />
         </Route>
+        <Route
+            path={RoutePaths.RESULTS}
+            render={() => <Results searchQuery={searchQuery} />}></Route>
         <Route path={RoutePaths.HOME}>
             <Home />
         </Route>
     </Switch>
 )
-
 export default Routes
